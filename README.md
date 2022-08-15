@@ -1,6 +1,6 @@
 # **Chat App Using Websocket**
 
-## configration in settings.py file
+## configuration in settings.py file
 
 ```python
 # app install
@@ -14,7 +14,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'app',
 ]
-#asgi configration
+#asgi configurationn
 ASGI_APPLICATION = 'websocket__layers.asgi.application'
 
 # database configuration
@@ -30,7 +30,7 @@ DATABASES = {
     }
 }
 
-#redis configration
+#redis configuration
 
 CHANNEL_LAYERS = {
     "default": {
@@ -43,7 +43,7 @@ CHANNEL_LAYERS = {
 
 
 ```
-## configration in asgi.py file
+## configuration in asgi.py file
 
 ```python
 import os
@@ -66,7 +66,7 @@ application = ProtocolTypeRouter({
 
 ```
 
-## configration in urls.py file
+## configuration in urls.py file
 ```python
 from django.contrib import admin
 from django.urls import path , include
@@ -77,7 +77,7 @@ urlpatterns = [
 ]
 ```
 
-## configration in app/views.py file
+## configuration in app/views.py file
 ```python
 from django.shortcuts import render
 from .models import Group,Chat
@@ -102,7 +102,7 @@ def index_group(request,groupname):
 
 ```
 
-## configration in app/urls.py file
+## configuration in app/urls.py file
 
 ```python
 from django.urls import path
@@ -113,7 +113,7 @@ urlpatterns = [
 ]
 ```
 
-## configration in app/conumers.py file
+## configuration in app/conumers.py file
 
 ```python
 from channels.consumer import SyncConsumer,AsyncConsumer,StopConsumer
@@ -254,7 +254,7 @@ class MyAsyncConsumer(AsyncConsumer):
 
 ```
 
-## configration in app/routing.py file
+## configuration in app/routing.py file
 ```python
 from django.urls import path
 from .import consumers
@@ -267,7 +267,7 @@ websocket_urlpattern  =  [
                           
 ]
 ```
-## configration in app/templates/app/index_group.html.py file
+## configuration in app/templates/app/index_group.html.py file
 ```html
 <!DOCTYPE html>
 <html lang="en">
