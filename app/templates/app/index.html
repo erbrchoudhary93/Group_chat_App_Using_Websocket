@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat app</title>
+</head>
+<body>
+    {% load static %}
+
+<h1>Websocke Testing</h1>
+<h1>Choose a Group</h1>
+<a href="{% url 'group' "Indian" %}">Indian Group</a><br>
+<a href="{% url 'group' "pak" %}">Pak Group</a><br>
+<a href="{% url 'group' "Nepal" %}">Nepal Group</a><br>
+<a href="{% url 'group' "usa" %}">USA Group</a><br>
+<a href="{% url 'group' "austrila" %}">Australia Group</a><br>
+<!-- <h1>Static Group</h1>
+
+<textarea name="" id="chat-log" cols="100" rows="20"></textarea><br>
+<input type="text" id="chat-message-input" size="100"><br>
+<input type="button" value="Send" id="chat-message-submit">
+ -->
+
+
+
+    <script>
+        // var ws = new WebSocket('ws://127.0.0.1:8000/ws/sc/')
+        var was = new WebSocket('ws://127.0.0.1:8000/ws/asc/')
+
+
+        // Sync
+        // ws.onopen=function(){
+        //     console.log('Websocket connection Open....')
+        //     // ws.send('Hi from client')
+        // }
+        // ws.onmessage=function(event){
+        //     console.log('Message Received from server....',event.data)
+        //     console.log(typeof(event.data))
+        //     const data = JSON.parse(event.data)
+        //     console.log(data.msg)
+        //     console.log(typeof(data))
+        //     document.querySelector('#chat-log').value+=(data.msg+"\n")
+
+        // }
+        // ws.onclose=function(){
+        //     console.log('Websocket connection closed....');
+        // };
+        // document.getElementById('chat-message-submit').onclick =
+        //     function(event){
+        //         const messageInputDom = document.getElementById('chat-message-input')
+        //         const message = messageInputDom.value
+        //         ws.send(JSON.stringify({
+        //             'msg':message
+        //         }))
+        //         messageInputDom.value = ''
+        //     }
+
+
+        //Asyc
+        was.onopen=function(){
+            console.log('Websocket connection Open....')
+            // ws.send('Hi from client')
+        }
+        was.onmessage=function(event){
+            console.log('Message Received from server....',event.data)
+            console.log(typeof(event.data))
+            const data = JSON.parse(event.data)
+            console.log(data.msg)
+            console.log(typeof(data))
+            document.querySelector('#chat-log').value+=(data.msg+"\n")
+
+        }
+        was.onclose=function(){
+            console.log('Websocket connection closed....');
+        };
+        document.getElementById('chat-message-submit').onclick =
+            function(event){
+                const messageInputDom = document.getElementById('chat-message-input')
+                const message = messageInputDom.value
+                was.send(JSON.stringify({
+                    'msg':message
+                }))
+                messageInputDom.value = ''
+            }
+        
+    </script>
+</body>
+</html>
